@@ -5,7 +5,7 @@ A jQuery to filter options
 
 Version `0.1`
 
-Code:
+#Code:
 
 		/**
 		 * Only shows options that contain a given text.
@@ -36,7 +36,7 @@ Code:
 # Demo:
 http://jsfiddle.net/x6cfF/4/
 
-Todo:
+#Todo:
 - Review http://www.lessanvaezi.com/filter-select-list-options/
 - Support optgroup 
 - Include demo in repository.
