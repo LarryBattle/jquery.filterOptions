@@ -1,7 +1,7 @@
 jquery.filterOptions
 ====================
 
-A jQuery to filter options
+A jQuery plugin for filtering options inside a select element.
 
 Version `0.1`
 
