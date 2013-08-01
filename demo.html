@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Demo</title>
+	</head>
+<body>
+  Customer Search:
+<input type="search" id="SearchBox" />
+<br />
+<div class="scrollable" id="CustomerSelectDiv">
+    <select size=2 class="scrollableinside" id="CustomerSelect">
+        <option value=100>test</option>
+        <option value=101>test1</option>
+        <option value=102>test2</option>
+        <option value=103>test3</option>
+    </select>
+</div>
+<script type='text/javascript' src='http://code.jquery.com/jquery-2.0.0b1.js'></script>
+<script type='text/javascript'>//<![CDATA[ 
+$(function () {
+    /**
+     * Only shows options that contain a given text.
+     * @author Larry Battle <bateru.com/news>
+     * @method showOnlyOptionsSimilarToText
+     * @param {String|jQuery Object} selectionEl - jQuery selector or jQuery object
+     * @param {String} str - String to compare
+     * @param {Boolean} isCaseSensitive - is case sensitive
+     */
+    var showOnlyOptionsSimilarToText = function (selectionEl, str, isCaseSensitive) {
+        if (isCaseSensitive)
+            str = str.toLowerCase();
+        // cache the jQuery object of the <select> element
+        var $el = $(selectionEl);
+        if (!$el.data("options")) {
+            // cache all the options inside the <select> element for easy recover
+            $el.data("options", $el.find("option").clone());
+        }
+        var newOptions = $el.data("options").filter(function () {
+                var text = $(this).text();
+                if (isCaseSensitive)
+                    text = text.toLowerCase();
+                return text.match(str);
+            });
+        $el.empty().append(newOptions);
+    };
+    
+    $("#SearchBox").on("keyup", function () {
+        var userInput = $("#SearchBox").val();
+        showOnlyOptionsSimilarToText($("#CustomerSelect"), userInput);
+    });    
+});
+//]]>
+	</script>
+	</body>
+</html>
